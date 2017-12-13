@@ -1,1 +1,1 @@
-[] execVM "Custom\lockerLimit\init.sqf";
+[] execVM "Custom\dynamicLockerLimit\init.sqf";

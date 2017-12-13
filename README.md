@@ -8,7 +8,7 @@ Base idea from [KnatteAnka](http://www.exilemod.com/profile/4567-knatteanka/). I
 
 1. DePbo your mpmissions pbo.
 2. Move MPMission/Custom to your mpmissions folder.
-3. Add **[] execVM "Custom\lockerLimit\init.sqf";** to your init.sqf or copy **MPMission/init.sqf** to your mpmissions folder.
+3. Add **[] execVM "Custom\dynamicLockerLimit\init.sqf";** to your init.sqf or copy **MPMission/init.sqf** to your mpmissions folder.
 4. Add the lines from **MPMission/config.cpp** to your mpmissions **config.cpp**.
 5. Repack your mpmissions pbo.
 6. Start your server and test everything.
