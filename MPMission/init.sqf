@@ -1,0 +1,1 @@
+[] execVM "Custom\lockerLimit\init.sqf";
