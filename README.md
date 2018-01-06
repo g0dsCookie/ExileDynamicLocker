@@ -4,6 +4,11 @@ These scripts add a dynamic locker limit to your server. The limit will scale wi
 
 Base idea from [KnatteAnka](http://www.exilemod.com/profile/4567-knatteanka/). I've just fixed a visual bug and cleaned the code a bit.
 
+<b>Added by red_ned</b><br>
+Tidied up display of long numbers<br>
+Added my owned 100 levels including last huge one to prevent issues<br>
+Forked 06/01/2018<br>
+
 # Installation
 
 1. DePbo your mpmissions pbo.
