@@ -9,7 +9,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_display", "_amountInput", "_alphabet", "_forbiddenCharacter", "_playerMoney", "_depositAmount", "_lockerLimit", "_lockerAmount", "_newLockerAmount"];
+private["_display", "_amountInput", "_alphabet", "_forbiddenCharacter", "_playerMoney", "_depositAmount", "_lockerLimit", "_lockerAmount", "_newLockerAmount", "_lockerLimitDisplay", "_prefixLimitDisplay"];
 disableSerialization;
 _display = uiNameSpace getVariable ["RscExileLockerDialog", displayNull];
 _amountInput = ctrlText (_display displayCtrl 4006);
@@ -33,11 +33,21 @@ try
 	};
 	//_lockerLimit = (getNumber(missionConfigFile >> "CfgLocker" >> "maxDeposit"));
 	_lockerLimit = ([ExileClientPlayerScore] call LL_getLockerLimit);
+
+// Make numbers look better when large > 2 decimal places
+_lockerLimitDisplay = _lockerLimit;
+if( _lockerLimitDisplay >= 1000 ) then { 
+										if( _lockerLimitDisplay >= 1000000 ) then {_lockerLimitDisplay = _lockerLimitDisplay / 1000000; _prefixLimitDisplay = "M" } 
+										else {_lockerLimitDisplay = _lockerLimitDisplay / 1000; _prefixLimitDisplay = "K" } 
+										} else { _prefixLimitDisplay = "" };
+_lockerLimitDisplay = [_lockerLimitDisplay,2] call BIS_fnc_cutDecimals;
+// End number clean-up	
+	
 	_lockerAmount = player getVariable ["ExileLocker", 0];
 	_newLockerAmount = _depositAmount + _lockerAmount;
 	if (_lockerLimit < _newLockerAmount) then
 	{
-		throw format ["Your locker can only hold %1 pop tabs.", _lockerLimit];
+		throw format ["Your locker can only hold %1 %2 pop tabs.", _lockerLimitDisplay, _prefixLimitDisplay];
 	};
 	["lockerDepositRequest", [_amountInput]] call ExileClient_system_network_send;
 }
